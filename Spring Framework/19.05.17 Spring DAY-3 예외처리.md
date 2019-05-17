@@ -1,4 +1,15 @@
-# Exception
+# 💀 Exception
+
+<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
+<!-- code_chunk_output -->
+
+* [💀 Exception](#exception)
+	* [Checked Exception / UnChecked Exception](#checked-exception-unchecked-exception)
+	* [Service와 Exception](#service와-exception)
+		* [❓ 그럼 어떻게 처리해야 할까](#그럼-어떻게-처리해야-할까)
+
+<!-- /code_chunk_output -->
+
 
 ## Checked Exception / UnChecked Exception
 
