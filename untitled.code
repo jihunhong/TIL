@@ -1,0 +1,46 @@
+
+        List<Playlist> searchResultList = null;
+        PlaylistListResponse searchResponse = null;
+
+        try {
+
+            // TokenResponse response = flow.newTokenRequest(code)
+
+            youtube = new YouTube.Builder(HTTP_TRANSPORT, JSON_FACTORY, new HttpRequestInitializer() {
+                public void initialize(HttpRequest request) throws IOException {
+                }
+            }).setApplicationName("ChartCrawler").build();
+
+            YouTube.Playlists.List list = youtube.playlists().list("snippet,contentDetails");
+
+
+            String apiKey = apikey;
+            list.setKey(apikey);
+
+            GoogleCredential credential = GoogleCredential.getApplicationDefault();
+
+            list.setMine(true);
+
+            searchResponse = list.execute();
+
+            searchResultList = searchResponse.getItems();
+            System.out.println(searchResponse.toString());
+
+        } catch (Throwable t) {
+            t.printStackTrace();
+        }
+
+        ArrayList<Map<String, String>> output = new ArrayList<>();
+
+        for (Playlist result : searchResponse.getItems()) {
+            PlaylistSnippet snippet = result.getSnippet();
+
+
+            Map<String, String> element = new HashMap<String, String>();
+            element.put("title", snippet.getTitle());
+            element.put("description", snippet.getDescription());
+
+            output.add(element);
+        }
+        return output;
+        
