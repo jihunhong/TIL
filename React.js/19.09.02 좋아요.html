@@ -16,9 +16,11 @@
                 }
                 
                 render(){
-                    return <button type="submit" onClick={() => { this.setState({liked:true})}}>
+                    return (
+                        <button type="submit" onClick={() => { this.setState({liked:true})}}>
                                 {this.state.liked === true ? 'Liked' : 'Like'}
-                            </button>;
+                        </button>
+                        );
                     
                 }
             }
