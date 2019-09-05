@@ -31,7 +31,7 @@ const GuGuDan = () => {
 
     return (
         <>
-            <div>{first} 곱하기 {second}는?</div>
+            <div>{first} 곱하기 {second}는????</div>
             <form onSubmit={onSubmitForm}>
                 <input ref={inputRef} type="number" value={value} onChange={onChangeInput}/>
                 <button>입력</button>
