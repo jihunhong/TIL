@@ -64,6 +64,7 @@ var c = Color.Green;
 Color[0] === 'Red';
 Color['Red'] === 0;
 
+const abc = 1;
 const op = abc?.name;
 
 function add(a: number, b:number): number{
@@ -88,6 +89,6 @@ const obj2: {a? : (b?: number) => string} = {
 }
 
 // typecast
-const paragraph: number;
+const paragraph: number = 1;
 (paragraph as unknown as string).substr(1, 2);
-(<string>paragraph).substr(1, 2);
+(<string><unknown>paragraph).substr(1, 2);

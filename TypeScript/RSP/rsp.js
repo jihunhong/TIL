@@ -20,6 +20,8 @@ function computerChoice(imgcoords) {
 }
 document.querySelectorAll('.btn').forEach((btn) => {
     btn.addEventListener('click', function (e) {
+        clearInterval(interval);
+        setTimeout(intervalMaker, 2000);
         const myChoice = this.textContent;
         const myScore = score[myChoice];
         const computerScore = score[computerChoice(imgcoords)];
@@ -27,7 +29,7 @@ document.querySelectorAll('.btn').forEach((btn) => {
         if (diff === 0) {
             console.log('비겼습니다');
         }
-        else if ([-1, 2].indexOf(diff)) {
+        else if ([-1, 2].includes(diff)) {
             console.log('이겼습니다');
         }
         else {
@@ -35,3 +37,25 @@ document.querySelectorAll('.btn').forEach((btn) => {
         }
     });
 });
+let interval;
+function intervalMaker() {
+    interval = setInterval(function () {
+        if (imgcoords === rsp.ROCK) {
+            imgcoords = rsp.SCISSORS;
+        }
+        else if (imgcoords === rsp.PAPER) {
+            imgcoords = rsp.PAPER;
+        }
+        else if (imgcoords === rsp.SCISSORS) {
+            imgcoords = rsp.ROCK;
+        }
+        // const computer = document.querySelector<HTMLDivElement>('#computer');
+        // if(computer){
+        //     computer.style.background = `url(https://en.pimg.jp/023/182/267/1/23182267.jpg) ${imgcoords}`
+        // }
+        if (document.querySelector('#computer')) {
+            document.querySelector('#computer').style.background = `url(https://en.pimg.jp/023/182/267/1/23182267.jpg) ${imgcoords}`;
+        }
+    }, 100);
+}
+intervalMaker();
