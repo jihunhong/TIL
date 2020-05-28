@@ -40,6 +40,8 @@ function computerChoice(imgcoords: RSP[keyof RSP]): keyof RSP {
     return (Object.keys(rsp) as ['ROCK', 'SCISSORS', 'PAPER']).find((k) => rsp[k] === imgcoords)!;
 }
 
+let interval: number;
+let point: number = 0;
 document.querySelectorAll('.btn').forEach((btn) => {
     btn.addEventListener('click', function(this: HTMLButtonElement, e: Event){
         clearInterval(interval);
@@ -52,14 +54,18 @@ document.querySelectorAll('.btn').forEach((btn) => {
         if(diff === 0){
             console.log('비겼습니다');
         }else if([-1, 2].includes(diff)){
-            console.log('이겼습니다')
+            console.log('이겼습니다');
+            point++;
+
         }else{
             console.log('졌습니다')
+            point--;
         }
+        (document.querySelector('#point') as HTMLDivElement)!.textContent = String(point);
     })
 })
 
-let interval: number;
+
 function intervalMaker(){
     interval = setInterval(function(){
         if(imgcoords === rsp.ROCK){
